@@ -1,0 +1,40 @@
+{
+  "name": "@hoowu/build-plugin-ice-ccc3x-proxy",
+  "version": "0.0.1",
+  "description": "ICE 项目 Web应用 的 CocosCreator 3.x 游戏开发 集成代理插件",
+  "author": "zfkun",
+  "license": "MIT",
+  "type": "module",
+  "main": "./esm/index.js",
+  "types": "./esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./esm/index.d.ts",
+      "import": "./esm/index.js",
+      "default": "./esm/index.js"
+    }
+  },
+  "files": [
+    "esm",
+    "!esm/**/*.map"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "watch": "tsc -w",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@ice/app": "^3.0.0",
+    "typescript": "^4.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zfkun/build-plugin-ice-ccc3x-proxy.git"
+  },
+  "publicConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}
