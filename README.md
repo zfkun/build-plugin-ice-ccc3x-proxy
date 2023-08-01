@@ -18,79 +18,82 @@ $ npm install @hoowu/build-plugin-ice-ccc3x-proxy
 
 ### 配置
 
-在 build.json 中进行以下配置：
+在 `ice.config.mts` 中进行以下配置：
 
 ```diff
-{
-  "plugins": [
-+   "@hoowu/build-plugin-ice-ccc3x-proxy"
-  ]
-}
+import { defineConfig } from "@ice/app";
+import ccc3x from "@hoowu/build-plugin-ice-ccc3x-proxy";
+
+export default defineConfig(() => ({
+  plugins: [
++   ccc3x(),
+  ],
+}));
 ```
 
 #### 禁用代理
 
-```json
-{
-  "plugins": [
-    [
-      "@hoowu/build-plugin-ice-ccc3x-proxy",
-      {
-        "proxy": false
-      }
-    ]
-  ]
-}
+```diff
+import { defineConfig } from "@ice/app";
+import ccc3x from "@hoowu/build-plugin-ice-ccc3x-proxy";
+
+export default defineConfig(() => ({
+  plugins: [
+    ccc3x({
++     proxy: false
+    }),
+  ],
+}));
 ```
 
 #### 修改代理地址
 
-```json
-{
-  "plugins": [
-    [
-      "@hoowu/build-plugin-ice-ccc3x-proxy",
-      {
-        "proxyTarget": "http://192.168.1.17:7456"
-      }
-    ]
-  ]
-}
+```diff
+import { defineConfig } from "@ice/app";
+import ccc3x from "@hoowu/build-plugin-ice-ccc3x-proxy";
+
+export default defineConfig(() => ({
+  plugins: [
+    ccc3x({
++     proxyTarget: "http://192.168.1.17:7456"
+    }),
+  ],
+}));
 ```
 
 #### 修改代理规则
 
-```json
-{
-  "plugins": [
-    [
-      "@hoowu/build-plugin-ice-ccc3x-proxy",
-      {
-        "proxyContext": ["/aaa", "/bbb"]
-      }
-    ]
-  ]
-}
+```diff
+import { defineConfig } from "@ice/app";
+import ccc3x from "@hoowu/build-plugin-ice-ccc3x-proxy";
+
+export default defineConfig(() => ({
+  plugins: [
+    ccc3x({
++     proxyContext: ["/aaa", "/bbb"]
+    }),
+  ],
+}));
 ```
 
 #### 修改代理白名单
 
-```json
-{
-  "plugins": [
-    [
-      "@hoowu/build-plugin-ice-ccc3x-proxy",
-      {
-        "allowedHosts": ["a.com", "sub.a.com", "b.com"]
-      }
-    ]
-  ]
-}
+```diff
+import { defineConfig } from "@ice/app";
+import ccc3x from "@hoowu/build-plugin-ice-ccc3x-proxy";
+
+export default defineConfig(() => ({
+  plugins: [
+    ccc3x({
++     allowedHosts: ["a.com", "sub.a.com", "b.com"]
+    }),
+  ],
+}));
 ```
 
 ### 自定义配置
 
-项目根目录下 .cc3x.json 文件, 定义的配置会强制覆盖 build.json 中的配置, 即优先级更高
+项目根目录下 `.cc3x.json` 文件, 定义的配置会强制覆盖 `ice.config.mts` 中的配置, 即优先级更高
 
 比如:
 
