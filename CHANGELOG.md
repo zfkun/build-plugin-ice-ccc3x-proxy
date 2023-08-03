@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.0.4
+
+- Fix: 更新 编译产物
+
 ## v0.0.3
 
 - Feat: 增加 cocos creator `2.x` 支持
