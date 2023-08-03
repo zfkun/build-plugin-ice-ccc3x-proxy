@@ -8,11 +8,19 @@ import {
 
 import type { Plugin } from "@ice/app/types";
 
+const PLUGIN_NAME = "@hoowu/build-plugin-ice-ccc3x-proxy";
+
 // IDE 本地预览地址 (浏览器模式)
 const DEFAULT_PROXY_TARGET = "http://localhost:7456";
 
 // 资源代理规则列表
 const DEFAULT_PROXY_CONTEXT = [
+  // 2.x 支持
+  "/preview-scripts",
+  "/app",
+  "/boot.js",
+  "/preview-scene",
+
   // 预览器
   "/preview-app",
 
@@ -181,7 +189,7 @@ interface PluginOptions {
 }
 
 const plugin: Plugin<PluginOptions> = (options) => ({
-  name: "ccc3x-proxy",
+  name: PLUGIN_NAME,
   setup: (api) => {
     const { context } = api;
     const { command, commandArgs } = context;
@@ -189,6 +197,7 @@ const plugin: Plugin<PluginOptions> = (options) => ({
     if (command !== "start") return;
     if (commandArgs.target === "web") processWeb(api, options);
   },
+  // runtime: `${PLUGIN_NAME}/runtime`,
 });
 
 export default plugin;
