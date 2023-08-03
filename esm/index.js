@@ -1,9 +1,15 @@
 import { resolve as pathResolve } from "node:path";
 import { accessSync as fsAccessSync, constants, existsSync as fsExistsSync, readFileSync as fsReadFileSync, } from "node:fs";
+const PLUGIN_NAME = "@hoowu/build-plugin-ice-ccc3x-proxy";
 // IDE 本地预览地址 (浏览器模式)
 const DEFAULT_PROXY_TARGET = "http://localhost:7456";
 // 资源代理规则列表
 const DEFAULT_PROXY_CONTEXT = [
+    // 2.x 支持
+    "/preview-scripts",
+    "/app",
+    "/boot.js",
+    "/preview-scene",
     // 预览器
     "/preview-app",
     // 基础
@@ -104,7 +110,7 @@ const processWeb = (api, options) => {
     });
 };
 const plugin = (options) => ({
-    name: "ccc3x-proxy",
+    name: PLUGIN_NAME,
     setup: (api) => {
         const { context } = api;
         const { command, commandArgs } = context;
@@ -113,6 +119,7 @@ const plugin = (options) => ({
         if (commandArgs.target === "web")
             processWeb(api, options);
     },
+    // runtime: `${PLUGIN_NAME}/runtime`,
 });
 export default plugin;
 //# sourceMappingURL=index.js.map
