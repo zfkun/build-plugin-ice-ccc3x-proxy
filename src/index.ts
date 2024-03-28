@@ -36,6 +36,9 @@ const DEFAULT_PROXY_CONTEXT = [
 
   // 插件
   "/plugins",
+
+  // 扩展
+  "/engine_external",
 ];
 
 interface IConfig {

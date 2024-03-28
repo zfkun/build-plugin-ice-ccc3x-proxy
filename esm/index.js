@@ -22,6 +22,8 @@ const DEFAULT_PROXY_CONTEXT = [
     "/assets",
     // 插件
     "/plugins",
+    // 扩展
+    "/engine_external",
 ];
 const readConfigSync = (file) => {
     let json;
